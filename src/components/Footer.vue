@@ -13,6 +13,6 @@ export default {
 
 <style>
 .footerContainer {
-  height: 6%;
+  height: 15px;
 }
 </style>
