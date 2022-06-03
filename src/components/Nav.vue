@@ -19,9 +19,10 @@
                 <a
                     href="https://github.com/AntonioSgarbi"
                     target="_blank"
-                    class="remove-link-style"
+                    class="remove-link-style space-icon"
                 >
                   Github
+                  <v-icon>mdi-code-greater-than</v-icon>
                 </a>
               </v-list-item-title>
             </v-list-item-content>
@@ -30,7 +31,10 @@
           <v-list dark flat>
             <v-list-item @click="setDrawer()" v-for="(i, item) in items" :key="item" :to="i.to">
               <v-list-item-content>
-                <v-list-item-title>{{ i.title }}</v-list-item-title>
+                <v-list-item-title class="space-icon">
+                  {{ i.title }}
+                  <v-icon>{{ i.icon }}</v-icon>
+                </v-list-item-title>
                 <v-divider></v-divider>
               </v-list-item-content>
             </v-list-item>
@@ -56,10 +60,10 @@ export default Vue.extend({
     nav: false,
     showDrawer: false,
     items: [
-      {title: "Portifólio", icon: '', to: '/projetos'},
-      {title: "Contato", icon: '', to: '/contato'},
-      {title: "Artigos", icon: '', to: '/artigos'},
-      {title: "Sobre", icon: '', to: '/about'},
+      {title: "Portifólio", icon: 'mdi-bookmark-multiple-outline', to: '/projetos'},
+      {title: "Contato", icon: 'mdi-contacts-outline', to: '/contato'},
+      {title: "Artigos", icon: 'mdi-book', to: '/artigos'},
+      {title: "Sobre", icon: 'mdi-medal-outline', to: '/about'},
     ],
   }),
   methods: {
@@ -83,4 +87,8 @@ export default Vue.extend({
   text-decoration: none;
 }
 
+.space-icon {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
