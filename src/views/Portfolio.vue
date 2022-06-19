@@ -10,4 +10,14 @@ export default {
 
 <style scoped>
 
+
+.darkMode {
+  background-color: darkslategray;
+}
+
+.lightMode {
+  background-color: #F09784;
+}
+
+
 </style>

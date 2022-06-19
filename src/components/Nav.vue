@@ -1,11 +1,12 @@
+<!--suppress CssUnknownTarget -->
 <template>
-  <v-container>
+  <v-container :class="isDark ? 'darkMode' : 'lightMode'">
       <v-overlay
-          @click="setDrawer()"
+          @click="setDrawer(false)"
           :value="showDrawer"
           z-index="4">
       </v-overlay>
-      <v-card dark>
+      <v-card :dark="isDark">
         <v-navigation-drawer
             v-model="showDrawer"
             bottom
@@ -19,7 +20,8 @@
                 <a
                     href="https://github.com/AntonioSgarbi"
                     target="_blank"
-                    class="remove-link-style space-icon"
+                    class="remove-link-style space-icon github"
+                    :class="isDark ? 'darkMode' : 'lightMode'"
                 >
                   Github
                   <v-icon>mdi-code-greater-than</v-icon>
@@ -28,7 +30,7 @@
             </v-list-item-content>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list dark flat>
+          <v-list :dark="isDark" flat>
             <v-list-item @click="setDrawer()" v-for="(i, item) in items" :key="item" :to="i.to">
               <v-list-item-content>
                 <v-list-item-title class="space-icon">
@@ -38,13 +40,20 @@
                 <v-divider></v-divider>
               </v-list-item-content>
             </v-list-item>
+            <v-list-item>
+              <v-switch
+                  :dark="isDark"
+                  :label="temaAtivado()"
+                  @change="setDark()"
+              ></v-switch>
+            </v-list-item>
           </v-list>
         </v-navigation-drawer>
       </v-card>
-      <v-app-bar app clipped-left dark>
-        <v-app-bar-nav-icon @click.stop="setDrawer()"></v-app-bar-nav-icon>
-        <v-tab to="/" class="remove-link-style">
-          <v-app-bar-title class="nav-title">Antônio Sgarbi</v-app-bar-title>
+      <v-app-bar :color=" isDark ? 'black' : '#F09784'" app clipped-left :dark="isDark" :class="{navDark: !isDark}">
+        <v-app-bar-nav-icon @click.stop="setDrawer(false)"></v-app-bar-nav-icon>
+        <v-tab to="/" @click.stop="setDrawer(true)">
+          <v-app-bar-title class="nav-title" :class="{ darkMode: isDark }">Antônio Sgarbi</v-app-bar-title>
         </v-tab>
       </v-app-bar>
   </v-container>
@@ -52,6 +61,7 @@
 
 <script>
 import Vue from "vue";
+import { mapState, mapMutations } from "vuex";
 
 export default Vue.extend({
   name: "Nav",
@@ -62,15 +72,31 @@ export default Vue.extend({
     items: [
       {title: "Portifólio", icon: 'mdi-bookmark-multiple-outline', to: '/projetos'},
       {title: "Contato", icon: 'mdi-contacts-outline', to: '/contato'},
-      {title: "Artigos", icon: 'mdi-book', to: '/artigos'},
+      {title: "Artigos", icon: 'mdi-book-outline', to: '/artigos'},
       {title: "Sobre", icon: 'mdi-medal-outline', to: '/about'},
     ],
   }),
+  computed: {
+    ...mapState(['isDark'])
+  },
   methods: {
-    setDrawer() {
-      this.showDrawer = !this.showDrawer;
+    ...mapMutations(['setDark']),
+
+    temaAtivado() {
+      let temaAtivado = this.isDark ? 'Escuro' : 'Claro'
+      let frase = "Tema " + temaAtivado + " ativado";
+      return frase;
+    },
+
+
+    setDrawer(isTitle) {
+      if(!isTitle)
+        this.showDrawer = !this.showDrawer;
+      else
+        this.showDrawer = false
     },
   },
+
 });
 </script>
 
@@ -78,8 +104,12 @@ export default Vue.extend({
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
 .nav-title {
+  color: black;
   font-family: "Allura", cursive;
   font-size: 3rem;
+}
+.navDark {
+  color: #F09784;
 }
 
 .remove-link-style {
@@ -87,8 +117,22 @@ export default Vue.extend({
   text-decoration: none;
 }
 
+
 .space-icon {
   display: flex;
   justify-content: space-between;
 }
+
+
+
+.darkMode {
+  color: white;
+}
+
+.lightMode {
+  color: black;
+}
+
+
+
 </style>

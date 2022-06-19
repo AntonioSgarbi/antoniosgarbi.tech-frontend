@@ -5,12 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    footerColor: "green"
+    footerColor: "green",
+    isDark: true
 
   },
   getters: {
+
   },
   mutations: {
+    setDark(state) {
+      console.log("chaged state: " + state.isDark)
+      state.isDark = !state.isDark;
+    },
+    setFooterColor(state, color) {
+      state.footerColor = color;
+    },
   },
   actions: {
   },

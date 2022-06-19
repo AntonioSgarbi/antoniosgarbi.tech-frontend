@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="apresentacao">
+    <section class="apresentacao" :class="{ darkMode: isDark }">
       <h2 class="titulo-apresentacao">
         Amante de tecnologia desenvolvedor de software.
       </h2>
@@ -21,7 +21,6 @@
       <div class="centralizado">
         <div :class="{width: classSelected}" class="back-dark">
           <a
-              id="sobre-carousel"
               href="#sobre-carousel"
               class="remove-link-style"
           >
@@ -30,41 +29,45 @@
         </div>
       </div>
     </section>
-    <v-divider></v-divider>
-    <article class="under-carousel">
-      <h2>Alguns dos projetos desenvolvidos</h2>
-      <v-carousel
-          cycle
-          interval="5000"
-          hide-delimiters
-          show-arrows-on-hover
-          class="carousel"
-          @change="(number) => colorChange(number)"
-      >
-        <v-carousel-item
-            v-for="(item,i) in items"
-            :key="i"
-            :href="item.url"
-            :target="'_blank'"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
+    <v-divider id="sobre-carousel"></v-divider>
+    <div>
+      <article class="under-carousel">
+        <h2 :class="{ darkMode: isDark }">Alguns dos projetos desenvolvidos</h2>
+        <v-carousel
+            cycle
+            interval="5000"
+            hide-delimiters
+            show-arrows-on-hover
+            class="carousel"
+            @change="(number) => colorChange(number)"
         >
-          <v-img
-              contain
-              :aspect-ratio="item.ratio"
-              :src="item.src"
-              :alt="item.alt"
-          ></v-img>
-          <v-footer :color="item.class.footerColor" class="footer-carousel">
-            <h3 style="margin-bottom: 10%" class="centralizado" :class="item.class.footerText">{{ item.title }}</h3>
-          </v-footer>
-        </v-carousel-item>
-      </v-carousel>
-    </article>
+          <v-carousel-item
+              v-for="(item,i) in items"
+              :key="i"
+              :href="item.url"
+              :target="'_blank'"
+              reverse-transition="fade-transition"
+              transition="fade-transition"
+          >
+            <v-img
+                contain
+                :aspect-ratio="item.ratio"
+                :src="item.src"
+                :alt="item.alt"
+            ></v-img>
+            <v-footer :color="item.class.footerColor" class="footer-carousel">
+              <h3 style="margin-bottom: 10%" class="centralizado branco" :class="[item.class.footerText]">{{ item.title }}</h3>
+            </v-footer>
+          </v-carousel-item>
+        </v-carousel>
+      </article>
+    </div>
   </div>
 </template>
 
 <script>
+
+import {mapState} from "vuex";
 
 export default {
   title: 'Home - Antônio Sgarbi',
@@ -113,6 +116,10 @@ export default {
     }
   },
 
+  computed: {
+    ...mapState(['isDark', 'footerColor'])
+  },
+
   methods: {
     classSelected() {
       for (let i = 0; i < 5; i++) {
@@ -128,7 +135,7 @@ export default {
     colorChange(number) {
       let colorClasses = ['#323C93', '#4B3424', '#800000']
       this.$store.state.footerColor=colorClasses[number]
-      console.log('state: '+ this.$store.state.footerColor)
+      console.log('state: '+ this.footerColor)
     }
 
 
@@ -140,6 +147,14 @@ export default {
 @font-face {
   font-family: "BodoniXT";
   src: url("../assets/BodoniXT.ttf") format("truetype");
+}
+
+.branco {
+  color: white;
+}
+
+.darkMode {
+  color: wheat;
 }
 
 .apresentacao {
@@ -160,8 +175,9 @@ export default {
   padding: 2%;
 }
 
-.sobre-carousel {
-
+.under-carousel {
+  margin-left: 5px;
+  margin-top: 50px;
 }
 
 .centralizado {
@@ -176,18 +192,6 @@ export default {
   text-decoration: none;
 }
 
-.vw80 {
-  width: 80%;
-}
-
-.vw60 {
-  width: 60%;
-}
-
-.vw40 {
-  width: 40%;
-}
-
 .back-dark {
   border-radius: 7px;
   background-color: darkslategray;
@@ -197,7 +201,4 @@ export default {
   height: 200px;
 }
 
-.under-carousel {
-  margin-top: 10em;
-}
 </style>

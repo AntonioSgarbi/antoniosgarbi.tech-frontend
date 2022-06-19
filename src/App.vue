@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Nav />
-    <v-main>
+    <v-main :class="$store.state.isDark ? 'darkModeBody' : 'lightModeBody'">
       <router-view/>
     </v-main>
     <Footer/>
@@ -35,5 +35,22 @@ export default {
 .margin-body {
   margin: 5px 10px 0 0;
 }
+
+.darkModeBody {
+  background-color: darkslategray;
+}
+
+.lightModeBody {
+  background-color: #EFBED1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:target {
+  scroll-margin-top: .8em;
+}
+
 
 </style>
