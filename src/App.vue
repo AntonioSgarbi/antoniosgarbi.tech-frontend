@@ -48,9 +48,16 @@ html {
   scroll-behavior: smooth;
 }
 
-:target {
-  scroll-margin-top: .8em;
+body::-webkit-scrollbar {
+  width: 10px;
 }
-
+body::-webkit-scrollbar-track {
+  background: black;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid black;
+}
 
 </style>
