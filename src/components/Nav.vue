@@ -50,11 +50,16 @@
           </v-list>
         </v-navigation-drawer>
       </v-card>
-      <v-app-bar :color=" isDark ? 'black' : '#F09784'" app clipped-left :dark="isDark" :class="{navDark: !isDark}">
+      <v-app-bar :color=" isDark ? '#272727' : '#F09784'" app clipped-left :dark="isDark" :class="{navDark: !isDark}">
         <v-app-bar-nav-icon @click.stop="setDrawer(false)"></v-app-bar-nav-icon>
-        <v-tab to="/" @click.stop="setDrawer(true)">
-          <v-app-bar-title class="nav-title" :class="{ darkMode: isDark }">Antônio Sgarbi</v-app-bar-title>
-        </v-tab>
+          <v-app-bar-title>
+            <v-tab to="/"
+                   class="nav-title remove-link-style"
+                   :class="{ darkMode: isDark }"
+                   @click.stop="setDrawer(true)"
+            >Antônio Sgarbi
+            </v-tab>
+          </v-app-bar-title>
       </v-app-bar>
   </v-container>
 </template>
@@ -106,14 +111,14 @@ export default Vue.extend({
 .nav-title {
   color: black;
   font-family: "Allura", cursive;
-  font-size: 3rem;
+  font-size: 2.75rem;
 }
+
 .navDark {
   color: #F09784;
 }
 
 .remove-link-style {
-  color: white;
   text-decoration: none;
 }
 
@@ -130,6 +135,7 @@ export default Vue.extend({
 }
 
 .lightMode {
+  text-decoration: none;
   color: black;
 }
 
