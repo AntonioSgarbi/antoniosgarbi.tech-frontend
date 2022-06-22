@@ -1,13 +1,15 @@
 <!--suppress CssUnknownTarget -->
 <template>
-  <v-container :class="isDark ? 'darkMode' : 'lightMode'">
+  <v-container>
       <v-overlay
+          :color="isDark ? '#04241f' : '#aafada'"
           @click="setDrawer(false)"
           :value="showDrawer"
           z-index="4">
       </v-overlay>
       <v-card :dark="isDark">
         <v-navigation-drawer
+            :color="isDark ? '#04241f' : '#aafada'"
             v-model="showDrawer"
             bottom
             app
@@ -21,7 +23,7 @@
                     href="https://github.com/AntonioSgarbi"
                     target="_blank"
                     class="remove-link-style space-icon github"
-                    :class="isDark ? 'darkMode' : 'lightMode'"
+                    :class="isDark ? 'darkModeLetter' : 'lightModeLetter'"
                 >
                   Github
                   <v-icon>mdi-code-greater-than</v-icon>
@@ -50,12 +52,12 @@
           </v-list>
         </v-navigation-drawer>
       </v-card>
-      <v-app-bar :color=" isDark ? '#272727' : '#F09784'" app clipped-left :dark="isDark" :class="{navDark: !isDark}">
+      <v-app-bar :color="isDark ? '#011a16' : '#68d9c2'" app clipped-left :dark="isDark">
         <v-app-bar-nav-icon @click.stop="setDrawer(false)"></v-app-bar-nav-icon>
           <v-app-bar-title>
             <v-tab to="/"
                    class="nav-title remove-link-style"
-                   :class="{ darkMode: isDark }"
+                   :class="{ darkModeLetter: isDark, lightModeLetter: !isDark }"
                    @click.stop="setDrawer(true)"
             >Antônio Sgarbi
             </v-tab>
@@ -101,7 +103,6 @@ export default Vue.extend({
         this.showDrawer = false
     },
   },
-
 });
 </script>
 
@@ -109,36 +110,25 @@ export default Vue.extend({
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
 .nav-title {
-  color: black;
   font-family: "Allura", cursive;
   font-size: 2.75rem;
-}
-
-.navDark {
-  color: #F09784;
 }
 
 .remove-link-style {
   text-decoration: none;
 }
 
-
 .space-icon {
   display: flex;
   justify-content: space-between;
 }
 
-
-
-.darkMode {
-  color: white;
+.darkModeLetter {
+  color: #dcf5eb;
 }
 
-.lightMode {
-  text-decoration: none;
+.lightModeLetter   {
   color: black;
 }
-
-
 
 </style>

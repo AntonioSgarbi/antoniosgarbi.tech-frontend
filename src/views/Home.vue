@@ -135,7 +135,6 @@ export default {
     colorChange(number) {
       let colorClasses = ['#323C93', '#4B3424', '#800000']
       this.$store.state.footerColor=colorClasses[number]
-      console.log('state: '+ this.footerColor)
     }
 
 
@@ -154,7 +153,7 @@ export default {
 }
 
 .darkMode {
-  color: wheat;
+  color: #dcf5eb;
 }
 
 .apresentacao {

@@ -1,5 +1,5 @@
 <template>
-  <h1>Portfolio</h1>
+  <h1></h1>
 </template>
 
 <script>
@@ -9,15 +9,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-.darkMode {
-  background-color: darkslategray;
-}
-
-.lightMode {
-  background-color: #F09784;
-}
 
 
 </style>

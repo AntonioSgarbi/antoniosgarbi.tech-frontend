@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Nav />
-    <v-main :class="$store.state.isDark ? 'darkModeBody' : 'lightModeBody'">
+    <v-main :class="{ darkModeBody: $store.state.isDark, lightModeBody: !$store.state.isDark }">
       <router-view/>
     </v-main>
     <Footer/>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style>
-.remove-link-style {
+.rm-link-style {
   color: white;
   text-decoration: none;
 }
@@ -37,18 +37,17 @@ export default {
 }
 
 .darkModeBody {
-  background-color: darkslategray;
+  background-color: #022923;
 }
 
 .lightModeBody {
-  background-color: #EFBED1;
+  background-color: #dcf5eb;
 }
 
 html {
   scroll-behavior: smooth;
 }
-
-body::-webkit-scrollbar {
+body::-webkit-scrollbar  {
   width: 10px;
 }
 body::-webkit-scrollbar-track {
