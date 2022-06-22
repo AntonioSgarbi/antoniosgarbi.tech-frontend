@@ -10,8 +10,3 @@ export default {
   name: "Artigo"
 }
 </script>
-
-<style scoped>
-
-
-</style>

@@ -91,8 +91,7 @@ export default Vue.extend({
 
     temaAtivado() {
       let temaAtivado = this.isDark ? 'Escuro' : 'Claro'
-      let frase = "Tema " + temaAtivado + " ativado";
-      return frase;
+      return "Tema " + temaAtivado + " ativado";
     },
 
 
