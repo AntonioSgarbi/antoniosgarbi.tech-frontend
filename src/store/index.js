@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     footerColor: "green",
-    isDark: true
+    isDark: false
 
   },
   getters: {

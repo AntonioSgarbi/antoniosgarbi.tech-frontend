@@ -1,10 +1,10 @@
 <template>
   <div>
     <section class="apresentacao" :class="{ darkMode: isDark }">
-      <h2 class="titulo-apresentacao">
+      <h2 class="titulo-apresentacao animate__animated animate__fadeInUpBig">
         Amante de tecnologia desenvolvedor de software.
       </h2>
-      <p class="paragrafo-apresentacao">
+      <p class="paragrafo-apresentacao animate__animated animate__fadeInUpBig">
         Apesar de ser um entusiasta de temas de computação em baixo nível e já ter me
         <br>
         aventurado em desenvolvimento para sistemas embarcados, tenho maior experiência
@@ -68,9 +68,10 @@
 <script>
 
 import {mapState} from "vuex";
+import 'animate.css';
 
 export default {
-  title: 'Home - Antônio Sgarbi',
+  title: 'Antônio Sgarbi',
   name: "Home",
 
   created() {

@@ -37,7 +37,7 @@ export default {
 }
 
 .darkModeBody {
-  background-color: #022923;
+  background-color: #0e2c2f;
 }
 
 .lightModeBody {

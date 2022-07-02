@@ -2,21 +2,21 @@
 <template>
   <v-container>
       <v-overlay
-          :color="isDark ? '#04241f' : '#aafada'"
+          :color="isDark ? '#0e2c2f' : '#aafada'"
           @click="setDrawer(false)"
           :value="showDrawer"
           z-index="4">
       </v-overlay>
       <v-card :dark="isDark">
         <v-navigation-drawer
-            :color="isDark ? '#04241f' : '#aafada'"
+            :color="isDark ? '#114146' : '#aafada'"
             v-model="showDrawer"
             bottom
             app
             clipped
             hide-overlay
             :style="{ top: $vuetify.application.top + 'px', zIndex: 6 }">
-          <v-list-item>
+          <v-list-item class="list-item animate__animated animate__fadeInLeft">
             <v-list-item-content>
               <v-list-item-title class="text-h6">
                 <a
@@ -35,7 +35,7 @@
           <v-list :dark="isDark" flat>
             <v-list-item @click="setDrawer()" v-for="(i, item) in items" :key="item" :to="i.to">
               <v-list-item-content>
-                <v-list-item-title class="space-icon">
+                <v-list-item-title class="space-icon list-item animate__animated animate__fadeInLeft">
                   {{ i.title }}
                   <v-icon>{{ i.icon }}</v-icon>
                 </v-list-item-title>
@@ -52,9 +52,9 @@
           </v-list>
         </v-navigation-drawer>
       </v-card>
-      <v-app-bar :color="isDark ? '#011a16' : '#68d9c2'" app clipped-left :dark="isDark">
+      <v-app-bar :color="isDark ? '#114146' : '#68d9c2'" app clipped-left :dark="isDark">
         <v-app-bar-nav-icon @click.stop="setDrawer(false)"></v-app-bar-nav-icon>
-          <v-app-bar-title>
+          <v-app-bar-title class="app-bar animate__animated animate__zoomIn">
             <v-tab to="/"
                    class="nav-title remove-link-style"
                    :class="{ darkModeLetter: isDark, lightModeLetter: !isDark }"
@@ -69,6 +69,7 @@
 <script>
 import Vue from "vue";
 import { mapState, mapMutations } from "vuex";
+import 'animate.css';
 
 export default Vue.extend({
   name: "Nav",
@@ -107,6 +108,15 @@ export default Vue.extend({
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+.app-bar:hover {
+  animation: animate__hinge;
+  animation-duration: 1s;
+}
+
+.list-item:hover {
+  animation: animate__fadeInLeft;
+}
 
 .nav-title {
   font-family: "Allura", cursive;
