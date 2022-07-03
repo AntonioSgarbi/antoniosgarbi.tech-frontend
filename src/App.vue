@@ -41,7 +41,8 @@ export default {
 }
 
 .lightModeBody {
-  background-color: #dcf5eb;
+  /*background-color: #dcf5eb;*/
+  background-color: #aafada;
 }
 
 html {

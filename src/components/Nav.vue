@@ -2,14 +2,14 @@
 <template>
   <v-container>
       <v-overlay
-          :color="isDark ? '#0e2c2f' : '#aafada'"
+          :color="isDark ? '#0e2c2f' : '#68d9c2'"
           @click="setDrawer(false)"
           :value="showDrawer"
           z-index="4">
       </v-overlay>
       <v-card :dark="isDark">
         <v-navigation-drawer
-            :color="isDark ? '#114146' : '#aafada'"
+            :color="isDark ? '#114146' : '#68d9c2'"
             v-model="showDrawer"
             bottom
             app
@@ -42,7 +42,7 @@
                 <v-divider></v-divider>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item>
+            <v-list-item @mouseover="setDark()" @mouseout="setDark()">
               <v-switch
                   :dark="isDark"
                   :label="temaAtivado()"
@@ -94,13 +94,13 @@ export default Vue.extend({
       let temaAtivado = this.isDark ? 'Escuro' : 'Claro'
       return "Tema " + temaAtivado + " ativado";
     },
-
-
     setDrawer(isTitle) {
-      if(!isTitle)
+      if(!isTitle) {
         this.showDrawer = !this.showDrawer;
-      else
+      }
+      else {
         this.showDrawer = false
+      }
     },
   },
 });
