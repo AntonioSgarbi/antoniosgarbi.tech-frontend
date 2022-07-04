@@ -2,21 +2,21 @@
 <template>
   <v-container>
       <v-overlay
-          :color="isDark ? '#0e2c2f' : '#68d9c2'"
-          @click="setDrawer(false)"
+          :color="colorSecondary"
+          @click="setDrawer(true)"
           :value="showDrawer"
           z-index="4">
       </v-overlay>
       <v-card :dark="isDark">
         <v-navigation-drawer
-            :color="isDark ? '#114146' : '#68d9c2'"
+            :color="colorPrimary"
             v-model="showDrawer"
             bottom
             app
             clipped
             hide-overlay
             :style="{ top: $vuetify.application.top + 'px', zIndex: 6 }">
-          <v-list-item class="list-item animate__animated animate__fadeInLeft">
+          <v-list-item v-animate-css.hover="'fadeInLeft'" class="list-item">
             <v-list-item-content>
               <v-list-item-title class="text-h6">
                 <a
@@ -33,11 +33,18 @@
           </v-list-item>
           <v-divider></v-divider>
           <v-list :dark="isDark" flat>
-            <v-list-item @click="setDrawer()" v-for="(i, item) in items" :key="item" :to="i.to">
+            <v-list-item
+                @click="setDrawer(true)"
+                v-for="(item, index) in items"
+                :key="index"
+                :to="item.to"
+                :class="'index'+index"
+                v-animate-css.hover="'fadeInLeft'"
+            >
               <v-list-item-content>
-                <v-list-item-title class="space-icon list-item animate__animated animate__fadeInLeft">
-                  {{ i.title }}
-                  <v-icon>{{ i.icon }}</v-icon>
+                <v-list-item-title class="space-icon list-item">
+                  {{ item.title }}
+                  <v-icon>{{ item.icon }}</v-icon>
                 </v-list-item-title>
                 <v-divider></v-divider>
               </v-list-item-content>
@@ -52,8 +59,8 @@
           </v-list>
         </v-navigation-drawer>
       </v-card>
-      <v-app-bar :color="isDark ? '#114146' : '#68d9c2'" app clipped-left :dark="isDark">
-        <v-app-bar-nav-icon @click.stop="setDrawer(false)"></v-app-bar-nav-icon>
+      <v-app-bar :color="colorPrimary" app clipped-left :dark="isDark">
+        <v-app-bar-nav-icon @click="setDrawer(false)"></v-app-bar-nav-icon>
           <v-app-bar-title class="app-bar animate__animated animate__zoomIn">
             <v-tab to="/"
                    class="nav-title remove-link-style"
@@ -69,7 +76,6 @@
 <script>
 import Vue from "vue";
 import { mapState, mapMutations } from "vuex";
-import 'animate.css';
 
 export default Vue.extend({
   name: "Nav",
@@ -85,21 +91,20 @@ export default Vue.extend({
     ],
   }),
   computed: {
-    ...mapState(['isDark'])
+    ...mapState(['isDark', 'colorPrimary', 'colorSecondary'])
   },
   methods: {
     ...mapMutations(['setDark']),
-
     temaAtivado() {
       let temaAtivado = this.isDark ? 'Escuro' : 'Claro'
       return "Tema " + temaAtivado + " ativado";
     },
     setDrawer(isTitle) {
-      if(!isTitle) {
-        this.showDrawer = !this.showDrawer;
+      if(isTitle) {
+        this.showDrawer = false
       }
       else {
-        this.showDrawer = false
+        this.showDrawer = !this.showDrawer;
       }
     },
   },
@@ -108,16 +113,6 @@ export default Vue.extend({
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
-
-.app-bar:hover {
-  animation: animate__hinge;
-  animation-duration: 1s;
-}
-
-.list-item:hover {
-  animation: animate__fadeInLeft;
-}
-
 .nav-title {
   font-family: "Allura", cursive;
   font-size: 2.75rem;

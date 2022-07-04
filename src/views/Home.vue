@@ -31,7 +31,7 @@
     </section>
     <v-divider id="sobre-carousel"></v-divider>
     <div>
-      <article class="under-carousel">
+      <article class="over-carousel">
         <h2 :class="{ darkMode: isDark }">Alguns dos projetos desenvolvidos</h2>
         <v-carousel
             cycle
@@ -39,12 +39,11 @@
             hide-delimiters
             show-arrows-on-hover
             class="carousel"
-            @change="(number) => colorChange(number)"
+            @change="(i) => colorChange(i)"
         > <v-tab to="/projetos">
           <v-carousel-item
-              v-for="(item,i) in projetos"
+              v-for="(item,i) in projects"
               :key="i"
-              :target="'_blank'"
               reverse-transition="fade-transition"
               transition="fade-transition"
           >
@@ -86,7 +85,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['isDark', 'footerColor', 'projetos'])
+    ...mapState(['isDark', 'footerColor', 'projects'])
   },
 
   methods: {
@@ -141,9 +140,10 @@ export default {
 
 .carousel {
   padding: 2%;
+  margin: 0;
 }
 
-.under-carousel {
+.over-carousel {
   margin-left: 5px;
   margin-top: 50px;
 }
