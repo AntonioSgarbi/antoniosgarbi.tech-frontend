@@ -16,7 +16,7 @@
             clipped
             hide-overlay
             :style="{ top: $vuetify.application.top + 'px', zIndex: 6 }">
-          <v-list-item v-animate-css.hover="'fadeInLeft'" class="list-item">
+          <v-list-item class="list-item">
             <v-list-item-content>
               <v-list-item-title class="text-h6">
                 <a
@@ -26,7 +26,7 @@
                     :class="isDark ? 'darkModeLetter' : 'lightModeLetter'"
                 >
                   Github
-                  <v-icon>mdi-code-greater-than</v-icon>
+                  <v-icon>mdi-github</v-icon>
                 </a>
               </v-list-item-title>
             </v-list-item-content>
@@ -39,10 +39,12 @@
                 :key="index"
                 :to="item.to"
                 :class="'index'+index"
-                v-animate-css.hover="'fadeInLeft'"
             >
               <v-list-item-content>
-                <v-list-item-title class="space-icon list-item">
+                <v-list-item-title
+                    v-animate-css.hover="'fadeInLeft'"
+                    class="space-icon list-item"
+                >
                   {{ item.title }}
                   <v-icon>{{ item.icon }}</v-icon>
                 </v-list-item-title>
