@@ -51,11 +51,11 @@
                 <v-divider></v-divider>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item @mouseover="setDark()" @mouseout="setDark()">
+            <v-list-item @mouseover="onHoverSetDark(true)" @mouseout="onHoverSetDark(false)">
               <v-switch
                   :dark="isDark"
                   :label="temaAtivado()"
-                  @change="setDark()"
+                  @change="onClickSetDark()"
               ></v-switch>
             </v-list-item>
           </v-list>
@@ -85,6 +85,8 @@ export default Vue.extend({
     drawer: false,
     nav: false,
     showDrawer: false,
+    isMouseOverSetDark: false,
+    isSetDarkClicked: false,
     items: [
       {title: "Portifólio", icon: 'mdi-bookmark-multiple-outline', to: '/projetos'},
       {title: "Contato", icon: 'mdi-contacts-outline', to: '/contato'},
@@ -100,6 +102,21 @@ export default Vue.extend({
     temaAtivado() {
       let temaAtivado = this.isDark ? 'Escuro' : 'Claro'
       return "Tema " + temaAtivado + " ativado";
+    },
+    onHoverSetDark(mouseIn) {
+      if(mouseIn) { //@mouseover
+        this.setDark();
+        this.isMouseOverSetDark = true;
+      }
+      else if(!mouseIn) { //@mouseout
+        !this.isSetDarkClicked ? this.setDark() : ''
+
+        this.isSetDarkClicked = false;
+        this.isMouseOverSetDark = false;
+      }
+    },
+    onClickSetDark() {
+      this.isSetDarkClicked = !this.isSetDarkClicked;
     },
     setDrawer(isTitle) {
       if(isTitle) {
