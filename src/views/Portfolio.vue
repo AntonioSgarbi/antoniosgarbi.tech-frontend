@@ -37,7 +37,6 @@
                   </v-btn>
                 </a>
                 <v-btn
-                    v-if="projeto.hasFront"
                     :style="btnBorderStyle()"
                     :color="colorPrimary"
                     :class="classeTextoCard()"
