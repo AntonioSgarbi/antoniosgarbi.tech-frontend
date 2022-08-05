@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/artigos',
     name: 'artigos',
-    component: () => import('../components/Texto.vue')
+    component: () => import('../views/Artigo.vue')
   },
   {
     path: '/contato',
