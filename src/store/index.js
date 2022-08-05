@@ -12,7 +12,6 @@ export default new Vuex.Store({
         projects: [
             {
                 title: "Fish Stock",
-                tecnologias: ['Spring', 'Angular'],
                 loading: false,
                 hasFront: true,
                 src: 'https://cdn.pixabay.com/photo/2020/05/02/12/35/fish-shop-5121241_960_720.png',
@@ -25,7 +24,10 @@ export default new Vuex.Store({
                 class: {
                     footerColor: "#323C93",
                     footerText: "margin"
-                }
+                },
+                swagger: 'https://gestor-peixaria.herokuapp.com/swagger-ui/index.html#/',
+                docker: 'https://hub.docker.com/repository/docker/antoniosk/gestor_peixaria',
+                technologies: [0,1,2,3,4,5,6]
             },
             {
                 title: 'Clínica Médica',
@@ -41,6 +43,7 @@ export default new Vuex.Store({
                     footerColor: "#4B3424",
                     footerText: "margin"
                 },
+                technologies: [0,1,2,7]
             },
             {
                 title: 'Micro Bank',
@@ -55,7 +58,9 @@ export default new Vuex.Store({
                     footerColor: "#800000",
                     footerText: "margin"
                 },
-                technologies: [0,1,2,3,4]
+                swagger: 'https://desafio-banco.herokuapp.com/swagger-ui/index.html#/',
+                docker: 'https://hub.docker.com/r/antoniosgarbi/lab-banco-digital-oo/',
+                technologies: [0,1,2,3,4,6]
             }
         ],
         technologies: [
@@ -78,6 +83,18 @@ export default new Vuex.Store({
             {
                 logo: "https://github.com/AntonioSgarbi/antoniosgarbi.tech-frontend/blob/main/src/assets/mockito-logo.png?raw=true",
                 alt: "Logo do framework Mockito, é um copo tranparente com folhas de hortelã e  palavra mockito em verde e preto"
+            },
+            {
+                logo: "https://seeklogo.com/images/A/angular-icon-logo-9946B9795D-seeklogo.com.png",
+                alt: "Logo do framework Angular, é uma figura geométrica de 6 lados, com bordas cinzas, interior vermelho com uma letra A em maiusculo e em branco no centro",
+            },
+            {
+                logo: 'https://img.mandic.com.br/blog/2015/01/homepage-docker-logo.png',
+                alt: 'Logo da ferramenta Docker, é um desenho de baleia azul submersa até a metade carregando conteiners empilhados'
+            },
+            {
+                logo: 'https://inssio.com/wp-content/uploads/2021/03/vuejs.png',
+                alt: 'Logo do framework Vue, uma letra V em maiusculo na cor verde'
             }
         ]
     },
