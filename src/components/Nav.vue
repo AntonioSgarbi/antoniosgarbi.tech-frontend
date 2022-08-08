@@ -89,8 +89,8 @@ export default Vue.extend({
     isSetDarkClicked: false,
     items: [
       {title: "Portifólio", icon: 'mdi-bookmark-multiple-outline', to: '/projetos'},
-      {title: "Contato", icon: 'mdi-contacts-outline', to: '/contato'},
       {title: "Artigos", icon: 'mdi-book-outline', to: '/artigos'},
+      {title: "Contato", icon: 'mdi-contacts-outline', to: '/contato'},
       {title: "Sobre", icon: 'mdi-medal-outline', to: '/about'},
     ],
   }),
