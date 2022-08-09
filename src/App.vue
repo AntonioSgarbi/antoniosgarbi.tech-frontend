@@ -33,7 +33,7 @@ export default {
 }
 
 .margin-body {
-  margin: 5px 10px 0 0;
+  margin: 5px 10px 0px 0px;
 }
 
 .darkModeBody {
@@ -41,7 +41,6 @@ export default {
 }
 
 .lightModeBody {
-  /*background-color: #dcf5eb;*/
   background-color: #aafada;
 }
 

@@ -18,7 +18,7 @@
           :style="{ top: $vuetify.application.top + 'px', zIndex: 6 }">
         <v-list-item class="list-item">
           <v-list-item-content>
-            <v-list-item-title class="text-h6">
+            <v-list-item-title v-animate-css.hover="'bounceIn'" class="text-h6">
               <a
                   href="https://github.com/AntonioSgarbi"
                   target="_blank"
@@ -31,6 +31,42 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <v-divider></v-divider>
+        <v-list-item
+            @click="setDrawer(true)"
+        >
+          <v-list-item-content>
+            <v-list-item-title
+                class="d-flex justify-space-around list-item"
+            >
+              <a target="_blank"
+                 class="rm-link-style"
+                 :class="conditionalStyle"
+                 href="https://web.whatsapp.com/send?phone=5548991706401">
+                <h2><v-icon v-animate-css.hover="'bounceIn'" :class="conditionalStyle">mdi-whatsapp</v-icon></h2>
+              </a>
+              <a target="_blank"
+                 :class="conditionalStyle"
+                 class="rm-link-style"
+                 href="mailto:antonio.sgarbi@hotmail.com">
+                <h2>
+                  <v-icon v-animate-css.hover="'bounceIn'" :class="conditionalStyle">mdi-email-outline</v-icon>
+                </h2>
+              </a>
+              <a target="_blank"
+                 :class="conditionalStyle"
+                 class="rm-link-style"
+                 href="https://linkedin.com/in/agsk">
+                <h2>
+                  <v-icon v-animate-css.hover="'bounceIn'" :class="conditionalStyle">mdi-linkedin</v-icon>
+                </h2>
+              </a>
+
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-divider></v-divider>
         <v-list :dark="isDark" flat>
           <v-list-item
@@ -46,7 +82,7 @@
                   class="space-icon list-item"
               >
                 {{ item.title }}
-                <v-icon>{{ item.icon }}</v-icon>
+                <v-icon :style="isDark ? 'color: white' : 'color: #306459'">{{ item.icon }}</v-icon>
               </v-list-item-title>
               <v-divider></v-divider>
             </v-list-item-content>
@@ -90,7 +126,6 @@ export default Vue.extend({
     items: [
       {title: "Portifólio", icon: 'mdi-bookmark-multiple-outline', to: '/projetos'},
       {title: "Artigos", icon: 'mdi-book-outline', to: '/artigos'},
-      {title: "Contato", icon: 'mdi-contacts-outline', to: '/contato'},
       {title: "Sobre", icon: 'mdi-medal-outline', to: '/about'},
     ],
   }),
@@ -104,11 +139,10 @@ export default Vue.extend({
       return "Tema " + temaAtivado + " ativado";
     },
     onHoverSetDark(mouseIn) {
-      if(mouseIn) { //@mouseover
+      if (mouseIn) { //@mouseover
         this.setDark();
         this.isMouseOverSetDark = true;
-      }
-      else if(!mouseIn) { //@mouseout
+      } else if (!mouseIn) { //@mouseout
         !this.isSetDarkClicked ? this.setDark() : ''
 
         this.isSetDarkClicked = false;
@@ -152,6 +186,10 @@ export default Vue.extend({
 
 .lightModeLetter {
   color: black;
+}
+
+.index2 {
+  color: #306459;
 }
 
 </style>

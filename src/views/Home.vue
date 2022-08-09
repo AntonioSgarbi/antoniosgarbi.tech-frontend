@@ -30,7 +30,7 @@
       </div>
     </section>
     <v-divider id="sobre-carousel"></v-divider>
-    <div>
+    <div style="width:100%; bottom: 0;">
       <article class="over-carousel">
         <h2 :class="{ darkMode: isDark }">Alguns dos projetos desenvolvidos</h2>
         <v-carousel
@@ -40,7 +40,7 @@
             show-arrows-on-hover
             class="carousel"
             @change="(i) => colorChange(i)"
-        > <v-tab to="/projetos">
+        > <v-tab class="remove-link-style" to="/projetos">
           <v-carousel-item
               v-for="(item,i) in projects"
               :key="i"
@@ -54,7 +54,7 @@
                 :alt="item.alt"
             ></v-img>
             <v-footer :color="item.class.footerColor" class="footer-carousel">
-              <h3 style="margin-bottom: 10%" class="centralizado branco" :class="[item.class.footerText]">{{ item.title }}</h3>
+              <h3 class=" branco" :class="[item.class.footerText]">{{ item.title }}</h3>
             </v-footer>
           </v-carousel-item>
         </v-tab>
@@ -139,12 +139,13 @@ export default {
 }
 
 .carousel {
-  padding: 2%;
+  width: 100%;
+  padding: 0;
   margin: 0;
 }
 
 .over-carousel {
-  margin-left: 5px;
+  margin-left: 0;
   margin-top: 50px;
 }
 
@@ -166,7 +167,7 @@ export default {
 }
 
 .footer-carousel {
-  height: 200px;
+  height: 20vh;
 }
 
 </style>

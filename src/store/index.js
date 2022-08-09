@@ -59,7 +59,7 @@ export default new Vuex.Store({
                     footerText: "margin"
                 },
                 swagger: 'https://desafio-banco.herokuapp.com/swagger-ui/index.html#/',
-                docker: 'https://hub.docker.com/r/antoniosgarbi/lab-banco-digital-oo/',
+                docker: 'https://hub.docker.com/repository/docker/antoniosk/desafio-banco',
                 technologies: [0,1,2,3,4,6]
             }
         ],
