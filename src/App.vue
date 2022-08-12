@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Nav />
+    <Nav/>
     <v-main :class="{ darkModeBody: $store.state.isDark, lightModeBody: !$store.state.isDark }">
       <router-view/>
     </v-main>
@@ -32,27 +32,29 @@ export default {
   text-decoration: none;
 }
 
-.margin-body {
-  margin: 5px 10px 0px 0px;
-}
-
 .darkModeBody {
   background-color: #0e2c2f;
 }
 
 .lightModeBody {
+  bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
   background-color: #aafada;
 }
 
 html {
   scroll-behavior: smooth;
 }
-body::-webkit-scrollbar  {
+
+body::-webkit-scrollbar {
   width: 10px;
 }
+
 body::-webkit-scrollbar-track {
   background: black;
 }
+
 body::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 20px;

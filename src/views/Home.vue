@@ -40,24 +40,28 @@
             show-arrows-on-hover
             class="carousel"
             @change="(i) => colorChange(i)"
-        > <v-tab class="remove-link-style" to="/projetos">
-          <v-carousel-item
-              v-for="(item,i) in projects"
-              :key="i"
-              reverse-transition="fade-transition"
-              transition="fade-transition"
-          >
-            <v-img
-                contain
-                :aspect-ratio="item.ratio"
-                :src="item.src"
-                :alt="item.alt"
-            ></v-img>
-            <v-footer :color="item.class.footerColor" class="footer-carousel">
-              <h3 class=" branco" :class="[item.class.footerText]">{{ item.title }}</h3>
-            </v-footer>
-          </v-carousel-item>
-        </v-tab>
+        >
+          <v-tab class="remove-link-style" to="/projetos">
+            <v-carousel-item
+                v-for="(item,i) in projects"
+                :key="i"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+                style="min-height: 100%; bottom: 0"
+            >
+              <v-img
+                  contain
+                  :aspect-ratio="item.ratio"
+                  min-height="250px"
+                  max-height="60vh"
+                  :src="item.src"
+                  :alt="item.alt"
+              ></v-img>
+              <v-footer :color="item.class.footerColor" class="footer-carousel">
+                <h3 class="white--text" :class="[item.class.footerText]">{{ item.title }}</h3>
+              </v-footer>
+            </v-carousel-item>
+          </v-tab>
         </v-carousel>
       </article>
     </div>
@@ -102,11 +106,11 @@ export default {
 
     colorChange(number) {
       let colorClasses = ['#323C93', '#4B3424', '#800000']
-      this.$store.state.footerColor=colorClasses[number]
+      this.$store.state.footerColor = colorClasses[number]
     }
 
 
-}
+  }
 }
 </script>
 
@@ -116,16 +120,12 @@ export default {
   src: url("../assets/BodoniXT.ttf") format("truetype");
 }
 
-.branco {
-  color: white;
-}
-
 .darkMode {
   color: #dcf5eb;
 }
 
 .apresentacao {
-  padding: 0 0 1% 2%;
+  padding: 0 0 1% 0;
 }
 
 .titulo-apresentacao {
@@ -139,9 +139,9 @@ export default {
 }
 
 .carousel {
+  bottom: 0;
   width: 100%;
   padding: 0;
-  margin: 0;
 }
 
 .over-carousel {
@@ -167,7 +167,9 @@ export default {
 }
 
 .footer-carousel {
-  height: 20vh;
+  bottom: 0;
+  height: auto;
+  min-height: 20%;
 }
 
 </style>
