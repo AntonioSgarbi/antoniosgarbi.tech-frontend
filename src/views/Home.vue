@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="apresentacao" :class="{ darkMode: isDark }">
-      <h2 class="titulo-apresentacao animate__animated animate__fadeInUpBig">
+      <h2 class="titulo-apresentacao animate__animated animate__fadeInRightBig">
         Amante de tecnologia desenvolvedor de software.
       </h2>
       <p class="paragrafo-apresentacao animate__animated animate__fadeInUpBig">
@@ -18,53 +18,7 @@
         <br>
         estudando temas relacionados a desenvolvimento de software e segurança da informação.
       </p>
-      <div class="centralizado">
-        <div :class="{width: classSelected}" class="back-dark">
-          <a
-              href="#sobre-carousel"
-              class="remove-link-style"
-          >
-            <v-icon class="centralizado">mdi-arrow-down</v-icon>
-          </a>
-        </div>
-      </div>
     </section>
-    <v-divider id="sobre-carousel"></v-divider>
-    <div style="width:100%; bottom: 0;">
-      <article class="over-carousel">
-        <h2 :class="{ darkMode: isDark }">Alguns dos projetos desenvolvidos</h2>
-        <v-carousel
-            cycle
-            interval="5000"
-            hide-delimiters
-            show-arrows-on-hover
-            class="carousel"
-            @change="(i) => colorChange(i)"
-        >
-          <v-tab class="remove-link-style" to="/projetos">
-            <v-carousel-item
-                v-for="(item,i) in projects"
-                :key="i"
-                reverse-transition="fade-transition"
-                transition="fade-transition"
-                style="min-height: 100%; bottom: 0"
-            >
-              <v-img
-                  contain
-                  :aspect-ratio="item.ratio"
-                  min-height="250px"
-                  max-height="60vh"
-                  :src="item.src"
-                  :alt="item.alt"
-              ></v-img>
-              <v-footer :color="item.class.footerColor" class="footer-carousel">
-                <h3 class="white--text" :class="[item.class.footerText]">{{ item.title }}</h3>
-              </v-footer>
-            </v-carousel-item>
-          </v-tab>
-        </v-carousel>
-      </article>
-    </div>
   </div>
 </template>
 
@@ -77,10 +31,6 @@ export default {
   title: 'Antônio Sgarbi',
   name: "Home",
 
-  created() {
-    this.classSelected()
-  },
-
   data() {
     return {
       positionCarousel: 0,
@@ -89,29 +39,10 @@ export default {
   },
 
   computed: {
-    ...mapState(['isDark', 'footerColor', 'projects'])
-  },
-
-  methods: {
-    classSelected() {
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          if (i === 4) {
-            this.classSelected()
-          }
-          return this.optionsSize[i]
-        }, 2000)
-      }
-    },
-
-    colorChange(number) {
-      let colorClasses = ['#323C93', '#4B3424', '#800000']
-      this.$store.state.footerColor = colorClasses[number]
-    }
-
-
+    ...mapState(['isDark', 'footerColor', 'projects']),
   }
-}
+  }
+
 </script>
 
 <style scoped>
@@ -131,45 +62,14 @@ export default {
 .titulo-apresentacao {
   font-family: 'BodoniXT', serif;
   font-size: xx-large;
+  padding-left: 3vw;
+  padding-bottom: 2vh;
 }
 
 .paragrafo-apresentacao {
+  padding-left: 3vw;
   font-family: Roboto, sans-serif;
   font-size: x-large;
-}
-
-.carousel {
-  bottom: 0;
-  width: 100%;
-  padding: 0;
-}
-
-.over-carousel {
-  margin-left: 0;
-  margin-top: 50px;
-}
-
-.centralizado {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.remove-link-style {
-  color: white;
-  text-decoration: none;
-}
-
-.back-dark {
-  border-radius: 7px;
-  background-color: darkslategray;
-}
-
-.footer-carousel {
-  bottom: 0;
-  height: auto;
-  min-height: 20%;
 }
 
 </style>

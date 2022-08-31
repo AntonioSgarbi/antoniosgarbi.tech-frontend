@@ -42,24 +42,21 @@
             >
               <a target="_blank"
                  class="rm-link-style"
-                 :class="conditionalStyle"
                  href="https://web.whatsapp.com/send?phone=5548991706401">
-                <h2><v-icon v-animate-css.hover="'bounceIn'" :class="conditionalStyle">mdi-whatsapp</v-icon></h2>
+                <h2><v-icon v-animate-css.hover="'bounceIn'">mdi-whatsapp</v-icon></h2>
               </a>
               <a target="_blank"
-                 :class="conditionalStyle"
                  class="rm-link-style"
                  href="mailto:antonio.sgarbi@hotmail.com">
                 <h2>
-                  <v-icon v-animate-css.hover="'bounceIn'" :class="conditionalStyle">mdi-email-outline</v-icon>
+                  <v-icon v-animate-css.hover="'bounceIn'">mdi-email-outline</v-icon>
                 </h2>
               </a>
               <a target="_blank"
-                 :class="conditionalStyle"
                  class="rm-link-style"
                  href="https://linkedin.com/in/agsk">
                 <h2>
-                  <v-icon v-animate-css.hover="'bounceIn'" :class="conditionalStyle">mdi-linkedin</v-icon>
+                  <v-icon v-animate-css.hover="'bounceIn'">mdi-linkedin</v-icon>
                 </h2>
               </a>
 
