@@ -6,9 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         footerColor: 'green',
-        isDark: false,
-        colorPrimary: '#68d9c2',
-        colorSecondary: '',
+        isDark: true,
+        colorPrimary: '#114146',
+        colorSecondary: '#0e2c2f',
         projects: [
             {
                 title: "Fish Stock",
@@ -26,7 +26,7 @@ export default new Vuex.Store({
                     footerText: "margin"
                 },
                 swagger: 'https://gestor-peixaria.herokuapp.com/swagger-ui/index.html#/',
-                docker: 'https://hub.docker.com/repository/docker/antoniosk/gestor_peixaria',
+                docker: 'https://hub.docker.com/r /antoniosk/gestor_peixaria',
                 technologies: [0, 1, 2, 3, 4, 5, 6]
             },
             {
@@ -59,7 +59,7 @@ export default new Vuex.Store({
                     footerText: "margin"
                 },
                 swagger: 'https://desafio-banco.herokuapp.com/swagger-ui/index.html#/',
-                docker: 'https://hub.docker.com/repository/docker/antoniosk/desafio-banco',
+                docker: 'https://hub.docker.com/r/antoniosk/desafio-banco',
                 technologies: [0, 1, 2, 3, 4, 6]
             }
         ],
