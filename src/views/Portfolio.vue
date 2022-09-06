@@ -54,6 +54,7 @@
         </v-img>
         <v-card-text
             class="pt-6"
+            @click="navigateToPlayer(index)"
             style="position: relative;"
         >
           <h3 class="text-h4 font-weight-light mb-2" :class="classeTextoCard()">
