@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="text-center">{{ project.title }}</h2>
+    <h2 class="text-center" :class="{ darkMode: darkMode }">{{ project.title }}</h2>
 
     <div class="d-flex flex-column-reverse mb-10">
       <div v-if="project.hasFront" class="d-flex justify-center main-div mb-3">
@@ -11,7 +11,12 @@
       <div class="d-flex justify-space-around">
         <div v-for="(technology, index) of project.technologies" :key="index" class="div-for zoom">
           <div class="align-self-end">
-            <v-img height="auto" min-width="50px" max-width="10vw" :src="project.technologies[index].logo" :alt="technology.alt"/>
+            <v-img
+                height="auto"
+                min-width="50px"
+                max-width="10vw"
+                :src="getTechFromIndex(index).logo"
+                :alt="getTechFromIndex(index).alt"/>
           </div>
         </div>
       </div>
@@ -58,20 +63,22 @@ import {mapState} from "vuex";
 export default {
   name: "PlayerProject",
   data: () => ({
-    project: null
+    project: null,
+    darkMode: null
   }),
   created() {
-    console.log(this.projects)
     this.project = this.projects[this.$route.params.project]
     console.log(this.project)
-    this.project.technologies.forEach(tech => {
-      this.project.technologies[this.project.technologies.indexOf(tech)] = this.$store.state.technologies[tech]
-    });
+    this.darkMode = this.isDark;
   },
   computed: {
-    ...mapState(['colorPrimary', 'projects']),
+    ...mapState(['isDark','colorPrimary', 'projects', 'technologies']),
   },
-  methods: {},
+  methods: {
+    getTechFromIndex(index) {
+      return this.technologies[index]
+    }
+  },
 }
 </script>
 
@@ -82,6 +89,10 @@ export default {
 
 .div-for {
   display: grid;
+}
+
+.darkMode {
+  color: #dcf5eb;
 }
 
 .card {
